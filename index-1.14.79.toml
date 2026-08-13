@@ -188,8 +188,8 @@ hash = "1d5799cd3b6ea714602c18546b99ba894e7511835b77803304792468fb7ee187"
 metafile = true
 
 [[files]]
-file = "mods/fftv-shot-designer-0.2.0.jar"
-hash = "c6b7f4f1a8e3fae31b562e49eedffad4a7caeb6aad272bd0f5003933e915d11b"
+file = "mods/fftv-shot-designer-0.2.1.jar"
+hash = "0cb4877f0bcdd33e738f3664b228ebe955f708239b8ab30b97d82c12f3354167"
 
 [[files]]
 file = "mods/flashback.pw.toml"
