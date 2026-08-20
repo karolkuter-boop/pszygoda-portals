@@ -1,56 +1,63 @@
-# Pszygoda — packwiz modpack (Fabric 1.21.1)
+# Pszygoda Portals — Fabric 1.21.1
 
-Dedykowany modpack dla projektu **Pszygoda** (FFTV). Zarządzany przez **packwiz** i serwowany
-przez **raw.githubusercontent** (jak UniverseMC) — instancja Prism/MultiMC z pre-launch hookiem
-packwiz **wymusza u graczy prawidłowe mody i resource packi** przy każdym starcie (auto-update).
-Brak GitHub Pages (buildy Jekyll były wolne/errorowały) — raw jest świeży od razu po pushu.
+Izolowany wariant paczki Pszygoda przygotowany pod Immersive Portals. Zwykła paczka
+`pszygoda-pack` pozostaje bez zmian. To osobny kanał Packwiz przeznaczony do nagrywania
+Farlands i ręcznie budowanych scen z portalami.
 
-## URL packa (dla packwiz-installer)
+Adres manifestu Packwiz:
 
+`https://raw.githubusercontent.com/karolkuter-boop/pszygoda-portals/main/pack.toml`
+
+## Zablokowany stos renderowania
+
+- Immersive Portals `6.0.6-mc1.21.1`
+- Iris `1.8.0+mc1.21.1`
+- Sodium `0.6.0+mc1.21.1`
+- VerityUrbex jako jedyny dostarczany shaderpack
+- Krawędź `0.10.1` z wyborem atmosfery według aktualnie renderowanego świata
+
+Immersive Portals 6.0.6 deklaruje twardą niezgodność z każdą wersją Iris inną niż 1.8.0 oraz
+Sodium inną niż 0.6.0. Nie uruchamiaj `packwiz update --all` bez ponownego audytu tej trójki.
+
+## Celowo usunięte z wariantu
+
+- Flashback i zależny od niego FFTV Shot Designer — replay nie odtwarza poprawnie bloków
+  renderowanych przez portale.
+- Bobby — oznaczony przez Immersive Portals jako poważnie niekompatybilny.
+- Simple Voice Chat — niepotrzebny w tym profilu i zgłoszony jako potencjalne źródło ścinania
+  dźwięku przy portalach.
+- Vista i dostarczany dla niej Moonlight — ich serwerowe mixiny synchronizacji encji kolidują
+  bezpośrednio z mixinem Immersive Portals i powodują crash przy pierwszych aktywnych chunkach.
+- Voidstack — jego globalny stan atmosfery i własne operacje na framebufferze mogą przeciekać
+  między równocześnie renderowanymi światami.
+- Complementary Reimagined i Photon Voidlands — pierwszy jest na oficjalnej liście
+  niekompatybilnych shaderów, a oba używają efektów temporalnych ryzykownych przy wielu kamerach.
+
+Kopie odzyskiwalne plików bez metadanych Packwiz są lokalnie w `_portals-retired/`; katalog jest
+ignorowany przez Git i Packwiz, więc nie trafi do eksportu.
+
+## Ustawienia bezpiecznego profilu
+
+`config/immersive_portals.json` ogranicza rekurencję do dwóch warstw i maksymalnie 16 renderów
+portali na klatkę. Iris startuje z `VerityUrbex.zip`. To profil do nagrywek i normalnej gry,
+nie gwarancja 120 FPS w scenie z wieloma widocznymi portalami.
+
+Immersive Portals musi znajdować się również na serwerze. Serwer Pszygoda Portals jest
+synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę samą wersję moda.
+
+## Instalacja klienta
+
+Najprościej zaimportować wydany plik `.mrpack`. Dla instancji aktualizowanej przez Packwiz
+ustaw powyższy adres `pack.toml` w komendzie pre-launch `packwiz-installer-bootstrap`.
+
+## Walidacja lokalna
+
+```powershell
+packwiz refresh
+packwiz list
+packwiz modrinth export --output Pszygoda-Portals-1.0.0.mrpack
 ```
-https://raw.githubusercontent.com/karolkuter-boop/pszygoda-pack/main/pack.toml
-```
 
-Pre-launch w instancji:
-```
-"$INST_JAVA" -jar packwiz-installer-bootstrap.jar -g https://raw.githubusercontent.com/karolkuter-boop/pszygoda-pack/main/pack.toml
-```
-
-## Zawartość
-
-**Mody (Fabric 1.21.1, loader 0.19.3):**
-- **pszygoda** (nasz mod — Verity) · Fabric API · Sodium 0.8.12-beta.1 · Flashback · Shine (+ YACL, Mod Menu)
-- **BBS CML** · Default Options (+ Balm) · **Simple Voice Chat** (TTS Verity)
-
-**Resource packi:** Golden Days Base + Golden Days Alpha (wymuszone przez Default Options → `config/defaultoptions/options.txt`, Alpha nad Base).
-
-**Shaderpack:** **VerityUrbex** (autorski, snop latarki + nocny urbex tonemap) — dostarczany jako
-`shaderpacks/VerityUrbex.zip` (raw plik w `index.toml`, auto-download z packiem). Wymaga **Iris**
-(dołożony: `mods/iris.pw.toml`, Iris 1.8.14-beta.1 pod Sodium 0.8.12-beta.1) + Sodium (już w packu).
-
-### Włączenie shadera VerityUrbex w Iris
-
-1. Wystartuj instancję (packwiz dociągnie Iris + `VerityUrbex.zip` do `shaderpacks/`).
-2. W grze: **Opcje → Ustawienia grafiki → Shadery…** (ekran Iris) → zaznacz **VerityUrbex** → **Zastosuj**.
-3. Weź item **latarka** (`pszygoda:latarka`), PPM = włącz — snop pojawia się gdy latarka jest w ręce.
-4. Strojenie na żywo: w tym samym ekranie **Ustawienia shadera** (zakładki „Snop latarki" / „Noc / Tonemap").
-
-Nasz mod `pszygoda` leży **wprost w `mods/pszygoda-1.0.0.jar`** (raw plik w `index.toml`, jak
-`mods/universemc-*.jar`) — pobierany z raw.githubusercontent razem z resztą packa. Pozostałe
-mody/resource packi pobierane są z Modrinth (URL + hash w `mods/*.pw.toml`, `resourcepacks/*.pw.toml`).
-
-## Aktualizacja packa (nowy build naszego moda)
-
-```bash
-cp .../build/libs/pszygoda-1.0.0.jar mods/pszygoda-1.0.0.jar
-packwiz refresh            # auto-indexuje jar w mods/
-git add -A && git commit -m "update" && git push
-# instancja dociągnie z raw przy najbliższym starcie (lub ręcznie packwiz-installer-bootstrap)
-```
-
-`packwiz modrinth update <slug>` / `packwiz update --all` aktualizują mody z Modrinth.
-
-## Uwaga licencyjna
-
-Tekstury twarzy Verity w modzie `pszygoda` pochodzą z fanowskich modów (ThatMob/Varmite) —
-ARR. Golden Days ma własną restrykcyjną licencję. Pack do użytku produkcyjnego FFTV.
+Po każdej zmianie stosu renderowania trzeba ponownie sprawdzić co najmniej: start klienta,
+wejście do świata, portal Overworld–Nether, widok portalu w portalu, shader włączony i wyłączony
+oraz przejście do obu wymiarów Krawędzi.

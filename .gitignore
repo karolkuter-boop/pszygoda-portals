@@ -1,6 +1,7 @@
 # packwiz cache
 .packwiz-cache/
 release-backups/
+_portals-retired/
 
 # OS
 .DS_Store
