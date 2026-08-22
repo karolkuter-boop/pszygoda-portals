@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "README.md"
-hash = "c5770f37ced3bb0e549991537d0d83fdf570cfe8f12633b9833c0be329f6407e"
+hash = "ca9225edef073247c9d0183d148c5ed27d6a98826b06d324b03e03a8689c551d"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -147,6 +147,11 @@ hash = "1d5799cd3b6ea714602c18546b99ba894e7511835b77803304792468fb7ee187"
 metafile = true
 
 [[files]]
+file = "mods/flashback.pw.toml"
+hash = "cb093ba99687d472a513b61d240f46a07732ac4d371b5a9df4738df379221aa3"
+metafile = true
+
+[[files]]
 file = "mods/forge-config-api-port.pw.toml"
 hash = "238b3ceb4214a682480ce00eefae5d34efa299ff6ff667e4b2f2ed503c6e76ee"
 metafile = true
@@ -167,8 +172,8 @@ hash = "691f950344974356f7c3a911b99affad66045633027e31e36a72a54d2bd3bc52"
 metafile = true
 
 [[files]]
-file = "mods/krawedz-0.10.1.jar"
-hash = "c070d79a1ddf10eaec6a9e06ab3f8583222dc7a629f89f99324cb656cdaca4b2"
+file = "mods/krawedz-0.10.2.jar"
+hash = "bde1083776adb3f5dde456609f7bb0edd7bb5e46089fa9c2f36d7ec68734fb94"
 
 [[files]]
 file = "mods/krypton.pw.toml"

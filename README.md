@@ -11,18 +11,30 @@ Adres manifestu Packwiz:
 ## Zablokowany stos renderowania
 
 - Immersive Portals `6.0.6-mc1.21.1`
+- Flashback `0.39.7` z mostem snapshotu chunków Immersive Portals
 - Iris `1.8.0+mc1.21.1`
 - Sodium `0.6.0+mc1.21.1`
 - VerityUrbex jako jedyny dostarczany shaderpack
-- Krawędź `0.10.1` z wyborem atmosfery według aktualnie renderowanego świata
+- Krawędź `0.10.2` z wyborem atmosfery według aktualnie renderowanego świata oraz mostem
+  Flashback–Immersive Portals
 
 Immersive Portals 6.0.6 deklaruje twardą niezgodność z każdą wersją Iris inną niż 1.8.0 oraz
 Sodium inną niż 0.6.0. Nie uruchamiaj `packwiz update --all` bez ponownego audytu tej trójki.
 
+## Flashback i portale
+
+Immersive Portals przechowuje chunki klienta we własnej mapie, podczas gdy Flashback 0.39.x
+buduje początkowy snapshot z nieużywanej tablicy vanilla. Krawędź 0.10.2 wykrywa ten dokładny
+zestaw i podaje Flashbackowi kopię realnej mapy chunków. Most jest klientowy i nie zmienia
+zachowania serwera ani zwykłego klienta bez obu modów.
+
+Test runtime na serwerze Farlands potwierdził start i zapis Flashbacka 0.39.7, snapshot 625
+chunków oraz wizualne odtworzenie bloków w edytorze replaya obok Immersive Portals 6.0.6,
+Iris 1.8.0 i Sodium 0.6.0.
+
 ## Celowo usunięte z wariantu
 
-- Flashback i zależny od niego FFTV Shot Designer — replay nie odtwarza poprawnie bloków
-  renderowanych przez portale.
+- FFTV Shot Designer — nie jest potrzebny do bazowego nagrywania i montażu replayów Flashback.
 - Bobby — oznaczony przez Immersive Portals jako poważnie niekompatybilny.
 - Simple Voice Chat — niepotrzebny w tym profilu i zgłoszony jako potencjalne źródło ścinania
   dźwięku przy portalach.
