@@ -18,6 +18,8 @@ Adres manifestu Packwiz:
   chmurami Minecrafta w trybie Fancy oraz profilem bezpiecznym dla portali
 - Krawędź `0.10.3` z wyborem atmosfery według aktualnie renderowanego świata oraz pełnym mostem
   Flashback–Immersive Portals
+- Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
+  Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
 
 Immersive Portals 6.0.6 deklaruje twardą niezgodność z każdą wersją Iris inną niż 1.8.0 oraz
 Sodium inną niż 0.6.0. Nie uruchamiaj `packwiz update --all` bez ponownego audytu tej trójki.
@@ -32,8 +34,10 @@ Most jest klientowy i nie zmienia zachowania zwykłego klienta bez obu modów.
 
 Test runtime na serwerze Farlands potwierdził nagranie dwóch światów, 625 zdalnych chunków,
 5 portali i 88 zdalnych encji, otwarcie replaya, utworzenie wtórnego Netheru, seek przez zmianę
-wymiaru oraz ciągłe odtworzenie przejścia Overworld–Nether. Log końcowy nie zawiera błędów
-ReplayServer, odrzuconych wymiarów ani wyjątków klienta przy Iris 1.8.0 i Sodium 0.6.0.
+wymiaru oraz ciągłe odtworzenie przejścia Overworld–Nether. Powtórny test na Pszygodzie 1.14.125
+potwierdził również czyste zamknięcie `ReplayServer` bez `TrumanRuntimeBridge.stop`,
+`NullPointerException` i `Exception stopping the server`. Log końcowy nie zawiera odrzuconych
+wymiarów ani wyjątków klienta przy Iris 1.8.0 i Sodium 0.6.0.
 
 ## Celowo usunięte z wariantu
 

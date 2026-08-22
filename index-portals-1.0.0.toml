@@ -6,7 +6,7 @@ hash = "d81519255c17758c6dcf3eac28c69544d2a0992fcc148c00091e83d90cf69cfb"
 
 [[files]]
 file = "README.md"
-hash = "28e54368befa3f3ea502f0523e0317bde7f36f0f04b3c5ea98135c9152873537"
+hash = "2f62e2c501c6ddcdeeca13fb1ca356a1760eca3161edd0fbc1a8a78a0d4aeae0"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -215,8 +215,8 @@ hash = "8083e49b94eb72deca40e87757359cfaceef8d1f6a1a07c82f9e8bc9285eb5f2"
 metafile = true
 
 [[files]]
-file = "mods/pszygoda-1.14.124.jar"
-hash = "d22b398112b14383113e18f2ea6879fcb3d34be3a92e0ba1c5098ef744357b42"
+file = "mods/pszygoda-1.14.125.jar"
+hash = "8cd0c81e5508d949865666a04d23ebb9cea9c46f74fad058d6b13808a5c67473"
 
 [[files]]
 file = "mods/puzzles-lib.pw.toml"
