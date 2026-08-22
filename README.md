@@ -16,7 +16,7 @@ Adres manifestu Packwiz:
 - Sodium `0.6.0+mc1.21.1`
 - `Photon-Pszygoda-1.3b` jako domyślny shaderpack: Photon 1.3b z prawdziwymi
   chmurami Minecrafta w trybie Fancy oraz profilem bezpiecznym dla portali
-- Krawędź `0.10.2` z wyborem atmosfery według aktualnie renderowanego świata oraz mostem
+- Krawędź `0.10.3` z wyborem atmosfery według aktualnie renderowanego świata oraz pełnym mostem
   Flashback–Immersive Portals
 
 Immersive Portals 6.0.6 deklaruje twardą niezgodność z każdą wersją Iris inną niż 1.8.0 oraz
@@ -25,13 +25,15 @@ Sodium inną niż 0.6.0. Nie uruchamiaj `packwiz update --all` bez ponownego aud
 ## Flashback i portale
 
 Immersive Portals przechowuje chunki klienta we własnej mapie, podczas gdy Flashback 0.39.x
-buduje początkowy snapshot z nieużywanej tablicy vanilla. Krawędź 0.10.2 wykrywa ten dokładny
-zestaw i podaje Flashbackowi kopię realnej mapy chunków. Most jest klientowy i nie zmienia
-zachowania serwera ani zwykłego klienta bez obu modów.
+buduje snapshot tylko z bieżącego świata vanilla. Krawędź 0.10.3 zapisuje mapy wymiarów,
+wtórne światy i chunki, zwykłe encje, portale oraz portale globalne. Przy odtwarzaniu usuwa
+niepełne pakiety preludium ReplayServera i odbudowuje stan IP w bezpiecznej kolejności.
+Most jest klientowy i nie zmienia zachowania zwykłego klienta bez obu modów.
 
-Test runtime na serwerze Farlands potwierdził start i zapis Flashbacka 0.39.7, snapshot 625
-chunków oraz wizualne odtworzenie bloków w edytorze replaya obok Immersive Portals 6.0.6,
-Iris 1.8.0 i Sodium 0.6.0.
+Test runtime na serwerze Farlands potwierdził nagranie dwóch światów, 625 zdalnych chunków,
+5 portali i 88 zdalnych encji, otwarcie replaya, utworzenie wtórnego Netheru, seek przez zmianę
+wymiaru oraz ciągłe odtworzenie przejścia Overworld–Nether. Log końcowy nie zawiera błędów
+ReplayServer, odrzuconych wymiarów ani wyjątków klienta przy Iris 1.8.0 i Sodium 0.6.0.
 
 ## Celowo usunięte z wariantu
 
