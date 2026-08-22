@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "README-AKTUALIZACJE.txt"
+hash = "d81519255c17758c6dcf3eac28c69544d2a0992fcc148c00091e83d90cf69cfb"
+
+[[files]]
 file = "README.md"
 hash = "95dda1903585deba017276c67b7321eda972400dfac1811a3d1c7e70c06e405c"
 
