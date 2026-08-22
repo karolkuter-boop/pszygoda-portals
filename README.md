@@ -14,7 +14,8 @@ Adres manifestu Packwiz:
 - Flashback `0.39.7` z mostem snapshotu chunków Immersive Portals
 - Iris `1.8.0+mc1.21.1`
 - Sodium `0.6.0+mc1.21.1`
-- VerityUrbex jako jedyny dostarczany shaderpack
+- `Photon-Pszygoda-1.3b` jako domyślny shaderpack: Photon 1.3b z prawdziwymi
+  chmurami Minecrafta w trybie Fancy oraz profilem bezpiecznym dla portali
 - Krawędź `0.10.2` z wyborem atmosfery według aktualnie renderowanego świata oraz mostem
   Flashback–Immersive Portals
 
@@ -42,8 +43,9 @@ Iris 1.8.0 i Sodium 0.6.0.
   bezpośrednio z mixinem Immersive Portals i powodują crash przy pierwszych aktywnych chunkach.
 - Voidstack — jego globalny stan atmosfery i własne operacje na framebufferze mogą przeciekać
   między równocześnie renderowanymi światami.
-- Complementary Reimagined i Photon Voidlands — pierwszy jest na oficjalnej liście
-  niekompatybilnych shaderów, a oba używają efektów temporalnych ryzykownych przy wielu kamerach.
+- Complementary Reimagined — jest na oficjalnej liście shaderów sprawiających problemy
+  z renderowaniem Immersive Portals.
+- VerityUrbex — był demonstracyjnym shaderem projektu i nie jest częścią profilu nagraniowego.
 
 Kopie odzyskiwalne plików bez metadanych Packwiz są lokalnie w `_portals-retired/`; katalog jest
 ignorowany przez Git i Packwiz, więc nie trafi do eksportu.
@@ -51,8 +53,15 @@ ignorowany przez Git i Packwiz, więc nie trafi do eksportu.
 ## Ustawienia bezpiecznego profilu
 
 `config/immersive_portals.json` ogranicza rekurencję do dwóch warstw i maksymalnie 16 renderów
-portali na klatkę. Iris startuje z `VerityUrbex.zip`. To profil do nagrywek i normalnej gry,
-nie gwarancja 120 FPS w scenie z wieloma widocznymi portalami.
+portali na klatkę. Iris startuje z `Photon-Pszygoda-1.3b.zip`. W tym wariancie Photon nie
+zastępuje nieba własnymi chmurami wolumetrycznymi: Iris wymusza waniliowe `clouds=fancy`,
+a geometria chmur przechodzi przez fallback `gbuffers_textured`. To są prawdziwe chmury
+Minecrafta Fancy, nie opcja `Blocky Clouds` Photona.
+
+TAA i Motion Blur są domyślnie wyłączone, ponieważ Immersive Portals nie renderuje poprawnie
+efektów temporalnych, gdy portal znajduje się w kadrze. Pozostałe ustawienia Photona nadal
+można swobodnie dopasowywać. To profil do nagrywek i normalnej gry, nie gwarancja 120 FPS
+w scenie z wieloma widocznymi portalami.
 
 Immersive Portals musi znajdować się również na serwerze. Serwer Pszygoda Portals jest
 synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę samą wersję moda.
@@ -71,5 +80,6 @@ packwiz modrinth export --output Pszygoda-Portals-1.0.0.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba ponownie sprawdzić co najmniej: start klienta,
-wejście do świata, portal Overworld–Nether, widok portalu w portalu, shader włączony i wyłączony
-oraz przejście do obu wymiarów Krawędzi.
+wejście do świata, widoczne chmury Minecrafta Fancy, portal Overworld–Nether, chmury widziane
+przez portal, widok portalu w portalu, shader włączony i wyłączony oraz przejście do obu
+wymiarów Krawędzi.

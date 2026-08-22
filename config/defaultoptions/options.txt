@@ -1,5 +1,7 @@
 version:3955
 fov:0.5
 soundCategory_music:0.0
+graphicsMode:1
+renderClouds:"true"
 resourcePacks:["vanilla","file/golden-days-base-16.1-[1.20-to-26.2].zip","file/golden-days-alpha-16.0-[1.20-to-26.2].zip","file/pszygoda-overrides"]
 incompatibleResourcePacks:[]
