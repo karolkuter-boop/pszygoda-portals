@@ -215,11 +215,6 @@ hash = "29583ec68be91596c7444b0fcd5609676d4bc0a1d083336fb2c279e3b0e09b3f"
 metafile = true
 
 [[files]]
-file = "mods/shine.pw.toml"
-hash = "417e6b17d229ab317c13eaaeacbdba9819e0d7a0182e307ea1c3541fde52ef8f"
-metafile = true
-
-[[files]]
 file = "mods/sodium.pw.toml"
 hash = "3f0496b56fc16ba9b346a828f9a2cab2960f3d0f13ffc21f42ba7fb206ef8cc5"
 metafile = true
