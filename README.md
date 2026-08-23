@@ -16,8 +16,8 @@ Adres manifestu Packwiz:
 - Sodium `0.6.0+mc1.21.1`
 - `Photon-Pszygoda-1.3c` jako domyślny shaderpack: Photon 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem oraz profilem bezpiecznym dla portali
-- Krawędź `0.10.3` z wyborem atmosfery według aktualnie renderowanego świata oraz pełnym mostem
-  Flashback–Immersive Portals
+- Krawędź `0.11.0` z protokołem snapshotu v2, zapisem portali tworzonych podczas nagrania
+  oraz anomalią `pekniecie`
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
 
@@ -27,17 +27,33 @@ Sodium inną niż 0.6.0. Nie uruchamiaj `packwiz update --all` bez ponownego aud
 ## Flashback i portale
 
 Immersive Portals przechowuje chunki klienta we własnej mapie, podczas gdy Flashback 0.39.x
-buduje snapshot tylko z bieżącego świata vanilla. Krawędź 0.10.3 zapisuje mapy wymiarów,
-wtórne światy i chunki, zwykłe encje, portale oraz portale globalne. Przy odtwarzaniu usuwa
-niepełne pakiety preludium ReplayServera i odbudowuje stan IP w bezpiecznej kolejności.
-Most jest klientowy i nie zmienia zachowania zwykłego klienta bez obu modów.
+nie odtwarza samodzielnie kompletnego stanu IP. Krawędź 0.11.0 zapisuje transakcję snapshotu
+`begin/reset/end`, mapę wymiarów, chunki wszystkich światów oraz portale tworzone i usuwane
+już po rozpoczęciu nagrania. Przy odtwarzaniu odbudowuje światy i renderery w stałej kolejności,
+odrzuca stare generacje oraz weryfikuje liczniki. Most pozostaje opcjonalny: Krawędź uruchamia
+się również bez Flashbacka i Immersive Portals.
 
-Test runtime na serwerze Farlands potwierdził nagranie dwóch światów, 625 zdalnych chunków,
-5 portali i 88 zdalnych encji, otwarcie replaya, utworzenie wtórnego Netheru, seek przez zmianę
-wymiaru oraz ciągłe odtworzenie przejścia Overworld–Nether. Powtórny test na Pszygodzie 1.14.125
-potwierdził również czyste zamknięcie `ReplayServer` bez `TrumanRuntimeBridge.stop`,
-`NullPointerException` i `Exception stopping the server`. Log końcowy nie zawiera odrzuconych
-wymiarów ani wyjątków klienta przy Iris 1.8.0 i Sodium 0.6.0.
+Macierz QA dla przyszłych nagrań zaliczono na Minecraft 1.21.1 z Flashbackiem 0.39.7 i IP 6.0.6:
+
+- IP bez Sodium i Iris,
+- IP z Sodium 0.6.0,
+- IP, Sodium i Iris 1.8.0 przy wyłączonym shaderze,
+- pełny profil z Photon-Pszygoda,
+- ręczny portal o skali 2× w tym samym wymiarze.
+
+W scenariuszu produkcyjnym replay rozpoczął się bez portalu, następnie anomalia utworzyła
+dokładnie cztery portale, usunęła je i utworzyła ponownie. Ciągłe odtwarzanie oraz seek przed
+spawnem, po spawnie, po usunięciu i po ponownym spawnie zachowały widoczny teren. Snapshoty
+raportowały dwa światy i 625 chunków; test skalowany raportował jeden portal po seeku. Log nie
+zawierał duplikatów, nieznanych wymiarów ani wyjątków kompatybilności.
+
+Zakres gwarantowanego QA obejmuje portale zwykłe i skalowane w jednym wymiarze. Portale między
+wymiarami, animowane i wielokrotnie zagnieżdżone nie są objęte tym wydaniem. Stare replaye
+nagrane bez protokołu 0.11.0 nie są naprawiane wstecznie.
+
+Nowa anomalia jest dostępna jako `/krawedz anomalia pekniecie`. Pierwsze wywołanie tworzy
+dwustronny klaster czterech portali 3×4, drugie go usuwa, a `/krawedz anomalia stop` sprząta
+portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest rejestrowany.
 
 ## Celowo usunięte z wariantu
 
@@ -86,10 +102,10 @@ ustaw powyższy adres `pack.toml` w komendzie pre-launch `packwiz-installer-boot
 ```powershell
 packwiz refresh
 packwiz list
-packwiz modrinth export --output Pszygoda-Portals-1.0.0.mrpack
+packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.8.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba ponownie sprawdzić co najmniej: start klienta,
-wejście do świata, widoczne chmury Minecrafta Fancy, portal Overworld–Nether, chmury widziane
-przez portal, widok portalu w portalu, shader włączony i wyłączony oraz przejście do obu
-wymiarów Krawędzi.
+wejście do świata, widoczne chmury Minecrafta Fancy i waniliowe słońce, zwykły oraz skalowany
+portal w tym samym wymiarze, shader włączony i wyłączony, ciągłe odtwarzanie oraz seek przez
+utworzenie, usunięcie i ponowne utworzenie portalu.
