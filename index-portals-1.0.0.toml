@@ -6,7 +6,7 @@ hash = "d81519255c17758c6dcf3eac28c69544d2a0992fcc148c00091e83d90cf69cfb"
 
 [[files]]
 file = "README.md"
-hash = "2f62e2c501c6ddcdeeca13fb1ca356a1760eca3161edd0fbc1a8a78a0d4aeae0"
+hash = "299cbbcc8fbe302718417a580d45ff6e9c8c27a4f4afe6185188c4459856b935"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -22,7 +22,7 @@ hash = "fabae4fd66ec3d9d75bdc0d0d4d575d88033232ad45d77402467094128ccd79c"
 
 [[files]]
 file = "config/iris.properties"
-hash = "bca6cdd4f6d6fdd7fd466664355a34d3432a20568a9f25512340a5125b794c88"
+hash = "b32d8f9635193797feff30886b63f1cb5479bfa7ee8378fd0f0175e396d8a922"
 
 [[files]]
 file = "emotes/F.json"
@@ -363,5 +363,5 @@ file = "scripts/verify-index.sh"
 hash = "c2c435d894eb8f952954cd4cc5bd3ce639fefbe4e80266a12c94dedca26d21d7"
 
 [[files]]
-file = "shaderpacks/Photon-Pszygoda-1.3b.zip"
-hash = "5324c6d8f9d6101738b015ae113217be7e9eb036176228c6576b1874eb877d1d"
+file = "shaderpacks/Photon-Pszygoda-1.3c.zip"
+hash = "a7fa64e55b95044414b0cbc804530b7a46926a0ca70113b0260953117014f454"

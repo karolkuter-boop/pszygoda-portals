@@ -14,8 +14,8 @@ Adres manifestu Packwiz:
 - Flashback `0.39.7` z mostem snapshotu chunków Immersive Portals
 - Iris `1.8.0+mc1.21.1`
 - Sodium `0.6.0+mc1.21.1`
-- `Photon-Pszygoda-1.3b` jako domyślny shaderpack: Photon 1.3b z prawdziwymi
-  chmurami Minecrafta w trybie Fancy oraz profilem bezpiecznym dla portali
+- `Photon-Pszygoda-1.3c` jako domyślny shaderpack: Photon 1.3b z prawdziwymi
+  chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem oraz profilem bezpiecznym dla portali
 - Krawędź `0.10.3` z wyborem atmosfery według aktualnie renderowanego świata oraz pełnym mostem
   Flashback–Immersive Portals
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
@@ -59,10 +59,14 @@ ignorowany przez Git i Packwiz, więc nie trafi do eksportu.
 ## Ustawienia bezpiecznego profilu
 
 `config/immersive_portals.json` ogranicza rekurencję do dwóch warstw i maksymalnie 16 renderów
-portali na klatkę. Iris startuje z `Photon-Pszygoda-1.3b.zip`. W tym wariancie Photon nie
+portali na klatkę. Iris startuje z `Photon-Pszygoda-1.3c.zip`. W tym wariancie Photon nie
 zastępuje nieba własnymi chmurami wolumetrycznymi: Iris wymusza waniliowe `clouds=fancy`,
 a geometria chmur przechodzi przez fallback `gbuffers_textured`. To są prawdziwe chmury
 Minecrafta Fancy, nie opcja `Blocky Clouds` Photona.
+
+Opcja `VANILLA_SUN` jest domyślnie włączona. Na niebie renderowana jest kwadratowa tekstura
+słońca Minecrafta, a realistyczna proceduralna tarcza Photona jest wyłączona. Kolor światła,
+cienie i atmosfera Photona pozostają aktywne.
 
 TAA i Motion Blur są domyślnie wyłączone, ponieważ Immersive Portals nie renderuje poprawnie
 efektów temporalnych, gdy portal znajduje się w kadrze. Pozostałe ustawienia Photona nadal
