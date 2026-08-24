@@ -5,7 +5,7 @@
 
   program/gbuffers_all_translucent:
   Handle translucent terrain, translucent entities (Iris), translucent handheld
-  items and gbuffers_textured
+  items, gbuffers_textured and the dedicated vanilla-cloud pass
 
 --------------------------------------------------------------------------------
 */
@@ -129,6 +129,28 @@ void main() {
     tint = gl_Color;
     material_mask = get_material_mask();
     tbn = get_tbn_matrix();
+
+#if defined PROGRAM_GBUFFERS_CLOUDS
+    // Minecraft 1.21.1 bakes directional brightness into the Fancy-cloud mesh:
+    // top=1.0, X sides=0.9, Z sides=0.8 and bottom=0.7. The generic Photon
+    // translucent path adds another directional-lighting term, exaggerating those
+    // steps into the visible brightness seams reported in Pszygoda. Recover the
+    // common world cloud colour, then present every face to Photon as an upward,
+    // fully skylit surface. Geometry, alpha and the vanilla clouds texture stay
+    // untouched.
+    float vanilla_face_brightness = gl_Normal.y > 0.5
+        ? 1.0
+        : gl_Normal.y < -0.5
+            ? 0.7
+            : abs(gl_Normal.x) > 0.5 ? 0.9 : 0.8;
+    tint.rgb = clamp01(tint.rgb * rcp(vanilla_face_brightness));
+    light_levels = vec2(0.0, 1.0);
+    tbn = mat3(
+        vec3(1.0, 0.0, 0.0),
+        vec3(0.0, 0.0, 1.0),
+        vec3(0.0, 1.0, 0.0)
+    );
+#endif
 
     bool is_top_vertex = uv.y < mc_midTexCoord.y;
 

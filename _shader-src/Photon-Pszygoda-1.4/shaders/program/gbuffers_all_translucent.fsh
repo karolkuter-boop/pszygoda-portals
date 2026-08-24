@@ -5,12 +5,27 @@
 
   program/gbuffers_all_translucent:
   Handle translucent terrain, translucent entities (Iris), translucent handheld
-  items and gbuffers_textured
+  items, gbuffers_textured and the dedicated vanilla-cloud pass
 
 --------------------------------------------------------------------------------
 */
 
 #include "/include/global.glsl"
+
+#if defined PROGRAM_GBUFFERS_CLOUDS
+// Fancy clouds already carry the world's cloud colour. They must not receive
+// terrain shadows or Photon's unrelated procedural cloud-shadow map; either one
+// would reintroduce patches after the vertex colours have been equalised.
+#ifdef SHADOW
+#undef SHADOW
+#endif
+#ifdef SHADOW_SSRT
+#undef SHADOW_SSRT
+#endif
+#ifdef CLOUD_SHADOWS
+#undef CLOUD_SHADOWS
+#endif
+#endif
 
 #ifdef PROGRAM_GBUFFERS_WATER
 layout(location = 0) out vec4 refraction_data;
@@ -153,6 +168,7 @@ vec3 light_color, ambient_color;
 #endif
 
 #if defined PROGRAM_GBUFFERS_TEXTURED || \
+    defined PROGRAM_GBUFFERS_CLOUDS || \
     defined PROGRAM_GBUFFERS_PARTICLES_TRANSLUCENT
 #define NO_NORMAL
 #endif

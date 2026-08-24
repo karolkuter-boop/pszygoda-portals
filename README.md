@@ -104,8 +104,10 @@ ignorowany przez Git i Packwiz, więc nie trafi do eksportu.
 `config/immersive_portals.json` ogranicza rekurencję do dwóch warstw i maksymalnie 16 renderów
 portali na klatkę. Iris startuje z `Photon-Pszygoda-1.4.zip`. W tym wariancie Photon nie
 zastępuje nieba własnymi chmurami wolumetrycznymi: Iris wymusza waniliowe `clouds=fancy`,
-a geometria chmur przechodzi przez fallback `gbuffers_textured`. To są prawdziwe chmury
-Minecrafta Fancy, nie opcja `Blocky Clouds` Photona.
+a geometria chmur przechodzi przez osobny `gbuffers_clouds`. Pass usuwa podwójne cieniowanie
+ścian (mnożniki kierunkowe Minecrafta nie są ponownie mnożone o kierunkowe światło Photona),
+więc na bryłach nie powstają skokowe plamy jasności. To nadal prawdziwe chmury Minecrafta
+Fancy, nie opcja `Blocky Clouds` Photona.
 
 Opcje `VANILLA_SUN` i `VANILLA_MOON` są domyślnie włączone. Na niebie renderowane są
 kwadratowe tekstury słońca oraz faz księżyca Minecrafta, a realistyczne proceduralne tarcze
