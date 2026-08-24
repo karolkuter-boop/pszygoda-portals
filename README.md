@@ -17,7 +17,7 @@ Adres manifestu Packwiz:
 - Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
-- Krawędź `0.19.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
+- Krawędź `0.19.1` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
   render-only Echo, oceanem pod `last_land`, anomaliami reżyserskimi i nową trasą Farlands
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
@@ -41,12 +41,14 @@ Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje op
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.19.0` i paczka `1.0.0-portals.15` domykają naprawę crasha lokalnego ReplayServera
-`Missing Dimension krawedz:podroz`: podczas odtwarzania nie jest ponownie wykonywany ani tick,
-ani dołączenie, aktualizacja i usuwanie graczy w serwerowym trackerze chunków Immersive Portals.
-Dokładny replay, który wcześniej crashował, otworzył się w pełnym stosie paczki z 625 chunkami,
-nagranym graczem i Replay Viewerem. Nie rozszerza to jeszcze gwarancji na
-złożone replaye portalowe:
+Krawędź `0.19.1` i paczka `1.0.0-portals.16` naprawiają replaye nagrane w `krawedz:podroz`,
+gdy ReplayServer Immersive Portals znał tylko waniliowe numery wymiarów. Most odzyskuje
+rzeczywisty identyfikator z nagranego przekierowanego pakietu, odtwarza ten sam wpis również
+po stronie ReplayServera, przywraca nagranego gracza przed pakietami ruchu i zabezpiecza
+każdy seek. Dokładny replay zgłoszony jako wadliwy przeszedł otwarcie, seek naprzód, wstecz
+i ponownie naprzód: teren miał aktywne chunky, `dealerke` i `Replay Viewer` występowali
+jednocześnie, a kamera zachowała niezależną pozycję bez `Missing Dimension`, brakujących
+trackerów ani crasha. Nie rozszerza to jeszcze gwarancji na złożone replaye portalowe:
 otwarcie replaya ani poprawne liczniki chunków nie są wystarczającym dowodem zgodności.
 
 Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
@@ -71,9 +73,9 @@ portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest re
 
 Krawędź 0.19.0 dodaje trwałe aliasy graczy: `/fakename set <nick>` zmienia nametag oraz nazwę
 na czacie, a `/fakename clear` przywraca nazwę konta. Alias jest synchronizowany z klientami
-i zapisywany po restarcie serwera. W tej samej wersji pełny cykl życia trackera IP jest
-wyłączony wyłącznie wewnątrz ReplayServera Flashbacka, więc zwykły serwer nadal korzysta
-z normalnego śledzenia chunków i graczy.
+i zapisywany po restarcie serwera. W 0.19.1 tracker IP wewnątrz ReplayServera jest wstrzymany
+tylko do odzyskania mapowania nagranego wymiaru; zwykły serwer nadal korzysta z normalnego
+śledzenia chunków i graczy.
 
 Krawędź 0.14.0 zawiera `/krawedz anomalia tekst`: wiadomości czatu, nicki w TAB-ie i nad
 głowami graczy oraz tekst tabliczek rozpadają się wyłącznie w renderze klienta. Faza glitchu
@@ -160,7 +162,7 @@ synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę 
 ## Instalacja klienta
 
 Najprościej zaimportować wydany plik `.mrpack`. Dla instancji aktualizowanej przez Packwiz
-zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.15-r10.zip`. R10 nie polega na zawodnym,
+zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.16-r11.zip`. R11 nie polega na zawodnym,
 pustym `$INST_JAVA`: uruchamia lokalny resolver, sprawdza Javę 21 wybraną przez Prism lub jego
 zarządzany runtime, a dopiero potem odpala `packwiz-installer-bootstrap` z powyższym adresem.
 Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
@@ -170,7 +172,7 @@ Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
 ```powershell
 packwiz refresh
 packwiz list
-packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.15.mrpack
+packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.16.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba najpierw zaliczyć regresję bez portali: start

@@ -2,11 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "README-AKTUALIZACJE.txt"
-hash = "a4cbba986cc8f2011122e51dfd8d0cbef81d0f940c5530a1010ddfe366e89913"
+hash = "ce1084e8d4c5c8f527d80ef1747096a9c5f105e941b87e8e528d42cada6ab339"
 
 [[files]]
 file = "README.md"
-hash = "c33502d7cf6a508374203703db2d7b8dbd3d7e44951cee81cad002ea763181c9"
+hash = "868e92584ade030b38cabae50e06e0f861e873c2be102a7ac3155b1e51c7eb1f"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -176,8 +176,8 @@ hash = "691f950344974356f7c3a911b99affad66045633027e31e36a72a54d2bd3bc52"
 metafile = true
 
 [[files]]
-file = "mods/krawedz-0.19.0.jar"
-hash = "148a59079a5c5a1329ca5cc6353c0be387bb2f6183c65adc4b70646e3b0481c4"
+file = "mods/krawedz-0.19.1.jar"
+hash = "d9658c5e6baba445b67bc5000878cf03b3838da786166437f24a85a16b86a601"
 
 [[files]]
 file = "mods/krypton.pw.toml"
