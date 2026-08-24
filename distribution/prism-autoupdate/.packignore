@@ -1,0 +1,12 @@
+minecraft/mods
+minecraft/config
+minecraft/shaderpacks
+minecraft/resourcepacks
+minecraft/logs
+minecraft/saves
+minecraft/crash-reports
+minecraft/screenshots
+minecraft/.fabric
+minecraft/natives
+minecraft/packwiz-installer.jar
+minecraft/packwiz.json

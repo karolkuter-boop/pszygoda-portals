@@ -33,23 +33,23 @@ już po rozpoczęciu nagrania. Przy odtwarzaniu odbudowuje światy i renderery w
 odrzuca stare generacje oraz weryfikuje liczniki. Most pozostaje opcjonalny: Krawędź uruchamia
 się również bez Flashbacka i Immersive Portals.
 
-Macierz QA dla przyszłych nagrań zaliczono na Minecraft 1.21.1 z Flashbackiem 0.39.7 i IP 6.0.6:
+Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
+Krawędź `0.11.0` i paczka `1.0.0-portals.8` nie mają potwierdzonego PASS pełnej macierzy:
+otwarcie replaya ani poprawne liczniki chunków nie są wystarczającym dowodem zgodności.
 
-- IP bez Sodium i Iris,
-- IP z Sodium 0.6.0,
-- IP, Sodium i Iris 1.8.0 przy wyłączonym shaderze,
-- pełny profil z Photon-Pszygoda,
-- ręczny portal o skali 2× w tym samym wymiarze.
+Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
 
-W scenariuszu produkcyjnym replay rozpoczął się bez portalu, następnie anomalia utworzyła
-dokładnie cztery portale, usunęła je i utworzyła ponownie. Ciągłe odtwarzanie oraz seek przed
-spawnem, po spawnie, po usunięciu i po ponownym spawnie zachowały widoczny teren. Snapshoty
-raportowały dwa światy i 625 chunków; test skalowany raportował jeden portal po seeku. Log nie
-zawierał duplikatów, nieznanych wymiarów ani wyjątków kompatybilności.
+- nagranie rozpoczęte bez aktywnych portali, w którym podczas całej sesji żaden portal nie jest
+  tworzony ani używany, ma korzystać z natywnej ścieżki Flashbacka;
+- w takim nagraniu mostek IP nie może uruchamiać własnego snapshotu ani resetować encji;
+- teren, nagrana postać, pozostałe encje, odtwarzanie ciągłe i seek muszą działać tak samo jak
+  przy nieobecnym Immersive Portals.
 
-Zakres gwarantowanego QA obejmuje portale zwykłe i skalowane w jednym wymiarze. Portale między
-wymiarami, animowane i wielokrotnie zagnieżdżone nie są objęte tym wydaniem. Stare replaye
-nagrane bez protokołu 0.11.0 nie są naprawiane wstecznie.
+Do czasu udokumentowanego PASS osobnej macierzy portalowej **nie uruchamiaj nagrywania
+Flashbacka w scenie z aktywnym portalem ani nie twórz portalu w trakcie nagrania**. Replaye
+z portalami, w tym zwykłymi i skalowanymi w jednym wymiarze, pozostają eksperymentalne.
+Portale między wymiarami, animowane i wielokrotnie zagnieżdżone nie są objęte zakresem.
+Stare replaye nagrane bez protokołu 0.11.0 nie są naprawiane wstecznie.
 
 Nowa anomalia jest dostępna jako `/krawedz anomalia pekniecie`. Pierwsze wywołanie tworzy
 dwustronny klaster czterech portali 3×4, drugie go usuwa, a `/krawedz anomalia stop` sprząta
@@ -105,7 +105,8 @@ packwiz list
 packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.8.mrpack
 ```
 
-Po każdej zmianie stosu renderowania trzeba ponownie sprawdzić co najmniej: start klienta,
-wejście do świata, widoczne chmury Minecrafta Fancy i waniliowe słońce, zwykły oraz skalowany
-portal w tym samym wymiarze, shader włączony i wyłączony, ciągłe odtwarzanie oraz seek przez
-utworzenie, usunięcie i ponowne utworzenie portalu.
+Po każdej zmianie stosu renderowania trzeba najpierw zaliczyć regresję bez portali: start
+klienta, wejście do świata, nagranie własnej postaci, odtwarzanie ciągłe oraz wielokrotny seek
+z shaderem wyłączonym i z Photonem. W logu takiego replaya mostek IP nie może się aktywować.
+Zwykły i skalowany portal, tworzenie, usunięcie, ponowny spawn oraz widok przez portal stanowią
+osobną macierz eksperymentalną i nie rozszerzają gwarancji bez jawnego PASS QA.

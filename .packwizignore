@@ -2,3 +2,5 @@ icon.png
 .nojekyll
 release-backups/
 _portals-retired/
+distribution/
+scripts/build-prism-autoupdate.ps1

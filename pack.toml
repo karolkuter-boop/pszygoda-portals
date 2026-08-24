@@ -6,7 +6,7 @@ pack-format = "packwiz:1.1.0"
 [index]
 file = "index-portals-1.0.0.toml"
 hash-format = "sha256"
-hash = "8b21b2a379e6d61a964fa21dbf8ff4e5b2f1463ba937c0432620a3880371a371"
+hash = "7303d40db3a0b3e91b8065e8a63a1dcd778bc538777a26e0e6d701de147c7b36"
 
 [versions]
 fabric = "0.19.3"

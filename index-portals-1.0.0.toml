@@ -6,7 +6,7 @@ hash = "d81519255c17758c6dcf3eac28c69544d2a0992fcc148c00091e83d90cf69cfb"
 
 [[files]]
 file = "README.md"
-hash = "20eca4105f374bd0bd2e0a062f521f6e8d9514e08d09bb0d3d3b587e4e344981"
+hash = "7f02b3cc6b55c151404847185625d4f65863b12a8beb57225019446f25b21989"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -360,7 +360,7 @@ hash = "d218b81be0b6c95e8b31820e08d1b1203a7c9b55d9a84a98a0b6ba9d0f5b0fbf"
 
 [[files]]
 file = "scripts/verify-index.sh"
-hash = "c2c435d894eb8f952954cd4cc5bd3ce639fefbe4e80266a12c94dedca26d21d7"
+hash = "2c0127cbb7700b0bfd556a88d0043a4636e7312a6a243b56fe817e4872325011"
 
 [[files]]
 file = "shaderpacks/Photon-Pszygoda-1.3c.zip"
