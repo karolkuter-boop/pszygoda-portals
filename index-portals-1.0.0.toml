@@ -6,7 +6,7 @@ hash = "a4cbba986cc8f2011122e51dfd8d0cbef81d0f940c5530a1010ddfe366e89913"
 
 [[files]]
 file = "README.md"
-hash = "f54fee6c77f3cf549fc5546e80384bc7e9c20842fff037d135012e187f94fd6f"
+hash = "39a0e04be2a65105b28f5bcb5edc5e9ea465823490e6d4f94683d0ab3ac72117"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -176,8 +176,8 @@ hash = "691f950344974356f7c3a911b99affad66045633027e31e36a72a54d2bd3bc52"
 metafile = true
 
 [[files]]
-file = "mods/krawedz-0.14.0.jar"
-hash = "e9ddb0672544cedfd3891475f2a5d675ba3a4044d6b4a769c8080ab2c29e4e97"
+file = "mods/krawedz-0.18.0.jar"
+hash = "7abe3f5325bf94027b5fa49775397ca3e084c27bc8936fa3af71348ff4080b96"
 
 [[files]]
 file = "mods/krypton.pw.toml"

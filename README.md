@@ -17,8 +17,8 @@ Adres manifestu Packwiz:
 - Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
-- Krawędź `0.14.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
-  render-only Echo, oceanem pod `last_land` oraz anomalią `pekniecie`
+- Krawędź `0.18.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
+  render-only Echo, oceanem pod `last_land`, anomaliami reżyserskimi i nową trasą Farlands
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
 
@@ -41,7 +41,7 @@ Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje op
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.14.0` i paczka `1.0.0-portals.13` naprawiają crash lokalnego ReplayServera
+Krawędź `0.18.0` i paczka `1.0.0-portals.14` zachowują naprawę crasha lokalnego ReplayServera
 `Missing Dimension krawedz:podroz`: serwerowe śledzenie chunków i encji Immersive Portals
 nie jest wykonywane ponownie podczas odtwarzania. Nie rozszerza to jeszcze gwarancji na
 złożone replaye portalowe:
@@ -81,6 +81,21 @@ deterministyczny fallback. Stan `ekwipunek`, `tekst` i `serca` trafia do snapsho
 a wszystkie trzy efekty korzystają z przewijalnego czasu świata. Serwer replaya nie wykonuje
 ponownie żadnej logiki anomalii; `woda`, `chunki`, `encje` i `kopiowanie` odtwarzają zapisane
 pakiety i stan świata, a portal `pekniecie` nie jest usuwany jako osierocony przy wczytaniu.
+
+## Zmiany trasy i anomalii w 0.18.0
+
+- Granice wszystkich etapów mają dokładne komendy `...-granica`, a Stripelands i Fringelands
+  zajmują poprawne miejsca oraz wartości filmowych współrzędnych.
+- Normalny teren przed Farlands i teren bazowy Stripelands korzystają z waniliowej generacji;
+  Farlands zaczynają się od dojrzałej geometrii bez drugiego, słabszego generatora na wejściu.
+- Farlands mają naturalne potwory, Stripelands sporadyczne krowy, owce i świnie, a Fringelands
+  sporadyczne owce. Flatlands otrzymały rzadkie małe jeziora z gliniasto-żwirowym dnem.
+- `kopiowanie` pozostaje ograniczone do etapu aktywacji, a każdą anomalię można uruchomić
+  globalnie albo dla nicku i selektora Minecrafta.
+- `chunki` migoczą pięć razy na sekundę głównie w pierwszych dwóch pierścieniach wokół gracza;
+  aktualny chunk gracza nigdy nie znika.
+- Różdżka Freeze Entity zamraża wskazaną encję bez kolizji i teleportacji, a kolejne użycie
+  bezpiecznie ją odmraża.
 
 ## Celowo usunięte z wariantu
 
@@ -137,7 +152,7 @@ synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę 
 ## Instalacja klienta
 
 Najprościej zaimportować wydany plik `.mrpack`. Dla instancji aktualizowanej przez Packwiz
-zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.10-r5.zip`. R5 nie polega na zawodnym,
+zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.14-r9.zip`. R9 nie polega na zawodnym,
 pustym `$INST_JAVA`: uruchamia lokalny resolver, sprawdza Javę 21 wybraną przez Prism lub jego
 zarządzany runtime, a dopiero potem odpala `packwiz-installer-bootstrap` z powyższym adresem.
 Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
@@ -147,7 +162,7 @@ Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
 ```powershell
 packwiz refresh
 packwiz list
-packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.10.mrpack
+packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.14.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba najpierw zaliczyć regresję bez portali: start
