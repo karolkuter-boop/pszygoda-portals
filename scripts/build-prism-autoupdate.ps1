@@ -22,6 +22,9 @@ if ($instanceCfg -match '(?im)^JavaPath=' -or
     $instanceCfg -match '(?i)[A-Z]:[/\\]Users[/\\]') {
     throw 'Szablon zawiera nieprzenosna, lokalna konfiguracje Javy.'
 }
+if ($instanceCfg -notmatch '(?im)^AutomaticJava=false$') {
+    throw 'Szablon musi korzystac z globalnej Javy Prism przed wykonaniem pre-launch.'
+}
 if ($instanceCfg -notmatch '(?m)^PreLaunchCommand=\\"\$INST_JAVA\\" -jar packwiz-installer-bootstrap\.jar -g https://raw\.githubusercontent\.com/karolkuter-boop/pszygoda-portals/refs/heads/main/pack\.toml$') {
     throw 'PreLaunchCommand nie uzywa przenosnego $INST_JAVA lub ma zly kanal Packwiz.'
 }

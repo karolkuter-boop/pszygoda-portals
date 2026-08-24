@@ -1,21 +1,22 @@
-PSZYGODA PORTALS - INSTANCJA PRISM Z AUTOMATYCZNA AKTUALIZACJA R2
+PSZYGODA PORTALS - INSTANCJA PRISM Z AUTOMATYCZNA AKTUALIZACJA R3
 
 1. Otworz Prism Launcher.
 2. Kliknij Dodaj instancje -> Importuj.
 3. Wskaz ten plik ZIP.
-4. Upewnij sie, ze powstala instancja o nazwie Pszygoda Portals AutoUpdate R2.
+4. Upewnij sie, ze powstala instancja o nazwie Pszygoda Portals AutoUpdate R3.
 5. Uruchom nowa instancje. Nie uruchamiaj starszej instancji Pszygoda Portals.
 
 Przed kazdym startem profil pobiera aktualna wersje paczki z:
 https://raw.githubusercontent.com/karolkuter-boop/pszygoda-portals/refs/heads/main/pack.toml
 
-Instancja korzysta z Javy wybranej automatycznie przez Prism Launcher. Nie zawiera
-sciezki Javy nalezacej do komputera autora. Pierwsze uruchomienie pobierze mody
-i moze potrwac kilka minut. Wymagane jest legalnie zalogowane konto Minecraft.
+Instancja korzysta z globalnej Javy ustawionej w Prism Launcher. Nie zawiera sciezki
+Javy nalezacej do komputera autora. Prism musi miec wybrana Jave 21 w Ustawienia ->
+Java; standardowa instalacja Prism robi to automatycznie. Pierwsze uruchomienie
+pobierze mody i moze potrwac kilka minut. Wymagane jest legalne konto Minecraft.
 
-Jesli w komunikacie startowym widac C:/Users/deale, uruchomiona zostala stara
-instancja albo stary plik z pamieci podrecznej. Ta wersja nazywa sie AutoUpdate R2
-i nie zawiera tekstu C:/Users/deale ani pola JavaPath.
+Jesli w komunikacie startowym widac C:/Users/deale albo sama fraze -jar bez programu
+Java przed nia, uruchomiona zostala starsza instancja. Ta wersja nazywa sie
+AutoUpdate R3 i nie zawiera tekstu C:/Users/deale ani pola JavaPath.
 
 Nie dodawaj recznie Bobby, Vista, Voidstack, Simple Voice Chat ani innych wersji
 Iris lub Sodium. Ten profil ma wersje przypiete pod Immersive Portals 6.0.6.
