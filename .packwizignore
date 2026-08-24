@@ -4,3 +4,7 @@ release-backups/
 _portals-retired/
 distribution/
 scripts/build-prism-autoupdate.ps1
+scripts/build-photon.ps1
+_shader-src/
+/Pszygoda-Portals-*.mrpack
+/Pszygoda-Portals-AutoUpdate-*.zip

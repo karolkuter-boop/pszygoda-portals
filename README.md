@@ -14,10 +14,10 @@ Adres manifestu Packwiz:
 - Flashback `0.39.7` z mostem snapshotu chunków Immersive Portals
 - Iris `1.8.0+mc1.21.1`
 - Sodium `0.6.0+mc1.21.1`
-- `Photon-Pszygoda-1.3c` jako domyślny shaderpack: Photon 1.3b z prawdziwymi
-  chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem oraz profilem bezpiecznym dla portali
-- Krawędź `0.11.0` z protokołem snapshotu v2, zapisem portali tworzonych podczas nagrania
-  oraz anomalią `pekniecie`
+- `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
+  chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
+- Krawędź `0.13.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
+  render-only Echo, oceanem pod `last_land` oraz anomalią `pekniecie`
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
 
@@ -26,15 +26,21 @@ Sodium inną niż 0.6.0. Nie uruchamiaj `packwiz update --all` bez ponownego aud
 
 ## Flashback i portale
 
-Immersive Portals przechowuje chunki klienta we własnej mapie, podczas gdy Flashback 0.39.x
-nie odtwarza samodzielnie kompletnego stanu IP. Krawędź 0.11.0 zapisuje transakcję snapshotu
-`begin/reset/end`, mapę wymiarów, chunki wszystkich światów oraz portale tworzone i usuwane
-już po rozpoczęciu nagrania. Przy odtwarzaniu odbudowuje światy i renderery w stałej kolejności,
-odrzuca stare generacje oraz weryfikuje liczniki. Most pozostaje opcjonalny: Krawędź uruchamia
-się również bez Flashbacka i Immersive Portals.
+Krawędź 0.12.0 wybiera raz, przy rozpoczęciu nagrania, jeden z dwóch trybów. Gdy nie ma
+aktywnego ani globalnego portalu, działa **TRANSPARENT**: nie zapisuje snapshotów mostka,
+nie przejmuje czyszczenia encji, nie filtruje natywnych pakietów IP i nie wymusza reloadu
+rendererów. Jedynym adapterem jest odczyt prawdziwej mapy chunków IP dla natywnego snapshotu
+Flashbacka. Dzięki temu instalacja IP nie powinna zmieniać zwykłego replaya bez portali.
+
+Nagranie rozpoczęte z aktywnym portalem używa eksperymentalnego trybu **MANAGED v3**:
+`begin/reset/end`, tokenu generacji, mapy wymiarów, liczników encji per wymiar i listy UUID
+nagranych graczy. Rozbieżność chunków, encji, graczy albo aktywnego świata kończy transakcję
+jawnym `FAIL`. Stare snapshoty v2 z zerem portali są ignorowane, aby natywny strumień
+Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje opcjonalny:
+Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.11.0` i paczka `1.0.0-portals.8` nie mają potwierdzonego PASS pełnej macierzy:
+Krawędź `0.13.0` i paczka `1.0.0-portals.10` nie rozszerzają gwarancji na replaye portalowe:
 otwarcie replaya ani poprawne liczniki chunków nie są wystarczającym dowodem zgodności.
 
 Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
@@ -49,11 +55,20 @@ Do czasu udokumentowanego PASS osobnej macierzy portalowej **nie uruchamiaj nagr
 Flashbacka w scenie z aktywnym portalem ani nie twórz portalu w trakcie nagrania**. Replaye
 z portalami, w tym zwykłymi i skalowanymi w jednym wymiarze, pozostają eksperymentalne.
 Portale między wymiarami, animowane i wielokrotnie zagnieżdżone nie są objęte zakresem.
-Stare replaye nagrane bez protokołu 0.11.0 nie są naprawiane wstecznie.
+Portal utworzony w trakcie nagrania transparentnego nie przełącza trybu w połowie pliku;
+operator dostaje jedno ostrzeżenie i powinien zatrzymać nagranie. Stary testowy replay portalowy
+nie jest naprawiany wstecznie.
 
 Nowa anomalia jest dostępna jako `/krawedz anomalia pekniecie`. Pierwsze wywołanie tworzy
 dwustronny klaster czterech portali 3×4, drugie go usuwa, a `/krawedz anomalia stop` sprząta
 portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest rejestrowany.
+
+Krawędź 0.13.0 dodaje `/krawedz anomalia tekst`: wiadomości czatu, nicki w TAB-ie i nad
+głowami graczy oraz tekst tabliczek rozpadają się wyłącznie w renderze klienta. Oryginalne
+wiadomości, profile i NBT tabliczek pozostają nietknięte. `/krawedz anomalia kopiowanie`
+przenosi każdą postawioną i zniszczoną pozycję bloku na tę samą lokalną współrzędną wszystkich
+wczytanych chunków aktywnego wymiaru oraz chunków wczytanych później. Wyłączenie zatrzymuje
+kolejkę i czyści wzorzec; kopie już zapisane w świecie pozostają.
 
 ## Celowo usunięte z wariantu
 
@@ -75,19 +90,30 @@ ignorowany przez Git i Packwiz, więc nie trafi do eksportu.
 ## Ustawienia bezpiecznego profilu
 
 `config/immersive_portals.json` ogranicza rekurencję do dwóch warstw i maksymalnie 16 renderów
-portali na klatkę. Iris startuje z `Photon-Pszygoda-1.3c.zip`. W tym wariancie Photon nie
+portali na klatkę. Iris startuje z `Photon-Pszygoda-1.4.zip`. W tym wariancie Photon nie
 zastępuje nieba własnymi chmurami wolumetrycznymi: Iris wymusza waniliowe `clouds=fancy`,
 a geometria chmur przechodzi przez fallback `gbuffers_textured`. To są prawdziwe chmury
 Minecrafta Fancy, nie opcja `Blocky Clouds` Photona.
 
-Opcja `VANILLA_SUN` jest domyślnie włączona. Na niebie renderowana jest kwadratowa tekstura
-słońca Minecrafta, a realistyczna proceduralna tarcza Photona jest wyłączona. Kolor światła,
-cienie i atmosfera Photona pozostają aktywne.
+Opcje `VANILLA_SUN` i `VANILLA_MOON` są domyślnie włączone. Na niebie renderowane są
+kwadratowe tekstury słońca oraz faz księżyca Minecrafta, a realistyczne proceduralne tarcze
+Photona są wyłączone. Kolor światła, cienie i atmosfera Photona pozostają aktywne.
+
+Tylko w `krawedz:podroz` współrzędna kamery od X=121800 do X=122200 płynnie miesza atmosferę
+w pomarańczowo-złoty gradient finału. Pozycja pochodzi z dokładnych uniformów Iris, więc efekt
+śledzi również freecam Flashbacka i nie zawija się co 30 000 bloków. Woda `last_land` i
+`the_edge` pozostaje niebieska; złoty wygląd tafli pochodzi z nieba i odbić. Inne wymiary oraz
+wcześniejsze etapy zachowują zwykły profil Photona.
 
 TAA i Motion Blur są domyślnie wyłączone, ponieważ Immersive Portals nie renderuje poprawnie
 efektów temporalnych, gdy portal znajduje się w kadrze. Pozostałe ustawienia Photona nadal
 można swobodnie dopasowywać. To profil do nagrywek i normalnej gry, nie gwarancja 120 FPS
 w scenie z wieloma widocznymi portalami.
+
+Krawędź 0.12.0 generuje ciągły ocean pod całym overworldowym `last_land` i łączy go bez szwu
+z `the_edge`. Już zapisane chunky zachowują starą pustkę do czasu kontrolowanej regeneracji;
+stare replaye również nie dostają oceanu wstecznie. Migracja serwera wymaga zatrzymania,
+pełnego backupu i osobnej zgody — sam update paczki nie usuwa żadnych chunków.
 
 Immersive Portals musi znajdować się również na serwerze. Serwer Pszygoda Portals jest
 synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę samą wersję moda.
@@ -95,14 +121,17 @@ synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę 
 ## Instalacja klienta
 
 Najprościej zaimportować wydany plik `.mrpack`. Dla instancji aktualizowanej przez Packwiz
-ustaw powyższy adres `pack.toml` w komendzie pre-launch `packwiz-installer-bootstrap`.
+zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.10-r5.zip`. R5 nie polega na zawodnym,
+pustym `$INST_JAVA`: uruchamia lokalny resolver, sprawdza Javę 21 wybraną przez Prism lub jego
+zarządzany runtime, a dopiero potem odpala `packwiz-installer-bootstrap` z powyższym adresem.
+Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
 
 ## Walidacja lokalna
 
 ```powershell
 packwiz refresh
 packwiz list
-packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.8.mrpack
+packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.10.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba najpierw zaliczyć regresję bez portali: start

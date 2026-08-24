@@ -7,5 +7,9 @@ https://raw.githubusercontent.com/karolkuter-boop/pszygoda-portals/main/pack.tom
 Nie kopiuj do niej modów z klasycznej Pszygody. W szczególności nie dodawaj Bobby,
 Vista, Voidstack ani innych wersji Iris lub Sodium, ponieważ kolidują z tym profilem.
 
-Flashback jest częścią tej paczki. Domyślny Photon-Pszygoda używa prawdziwych chmur
-Minecrafta Fancy; TAA i Motion Blur pozostają wyłączone dla Immersive Portals.
+Flashback jest częścią tej paczki. Krawędź 0.12.0 pozostawia zwykłe nagrania bez
+portali na natywnej ścieżce Flashbacka; nagrywanie scen z aktywnymi portalami nadal
+jest eksperymentalne. Domyślny Photon-Pszygoda 1.4 używa prawdziwych chmur
+Minecrafta Fancy i kwadratowego słońca; TAA i Motion Blur pozostają wyłączone dla
+Immersive Portals. W finale Krawędzi niebo przechodzi w pomarańczowo-złoty gradient,
+a woda zachowuje niebieski kolor.

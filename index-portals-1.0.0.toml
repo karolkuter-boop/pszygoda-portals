@@ -2,11 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "README-AKTUALIZACJE.txt"
-hash = "d81519255c17758c6dcf3eac28c69544d2a0992fcc148c00091e83d90cf69cfb"
+hash = "5a9a5725aa9e95df39a21a97b09c87024b3dc301fa3a24a6513225e3f590bf2c"
 
 [[files]]
 file = "README.md"
-hash = "7f02b3cc6b55c151404847185625d4f65863b12a8beb57225019446f25b21989"
+hash = "8800b4b18571339282dbc8b1f9ec94e19bcdf6531b47b59736c675d1bf6e596f"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -22,7 +22,7 @@ hash = "fabae4fd66ec3d9d75bdc0d0d4d575d88033232ad45d77402467094128ccd79c"
 
 [[files]]
 file = "config/iris.properties"
-hash = "b32d8f9635193797feff30886b63f1cb5479bfa7ee8378fd0f0175e396d8a922"
+hash = "5a2af792021ab953bf92b0083df4a345e0be0d3b4f230fa6b56d425bd1e04b37"
 
 [[files]]
 file = "emotes/F.json"
@@ -176,8 +176,8 @@ hash = "691f950344974356f7c3a911b99affad66045633027e31e36a72a54d2bd3bc52"
 metafile = true
 
 [[files]]
-file = "mods/krawedz-0.11.0.jar"
-hash = "b26b571db54f703f1752ee83e530275bef161a35ac272f9393975c484c27c581"
+file = "mods/krawedz-0.13.0.jar"
+hash = "6f0b5cb7da9bffa05f1a5089f284b2df5ba2423a1152605b67f4c3de462a094f"
 
 [[files]]
 file = "mods/krypton.pw.toml"
@@ -202,6 +202,11 @@ metafile = true
 [[files]]
 file = "mods/mutant-monsters.pw.toml"
 hash = "5dc69d7e3b51af646f3506007cc0f2b98f587787959f959069c5211c0e5b6574"
+metafile = true
+
+[[files]]
+file = "mods/ok-zoomer.pw.toml"
+hash = "58029f1f8d3ff8baef41e273399dc84a98c9bf447abaf607b2874038d4423055"
 metafile = true
 
 [[files]]
@@ -363,5 +368,5 @@ file = "scripts/verify-index.sh"
 hash = "2c0127cbb7700b0bfd556a88d0043a4636e7312a6a243b56fe817e4872325011"
 
 [[files]]
-file = "shaderpacks/Photon-Pszygoda-1.3c.zip"
-hash = "a7fa64e55b95044414b0cbc804530b7a46926a0ca70113b0260953117014f454"
+file = "shaderpacks/Photon-Pszygoda-1.4.zip"
+hash = "772d2fa4a2793ac796ea9521681caf054ceac9b0d74556d09db4bd6126aea2d8"
