@@ -7,6 +7,9 @@ https://raw.githubusercontent.com/karolkuter-boop/pszygoda-portals/main/pack.tom
 Nie kopiuj do niej modów z klasycznej Pszygody. W szczególności nie dodawaj Bobby,
 Vista, Voidstack ani innych wersji Iris lub Sodium, ponieważ kolidują z tym profilem.
 
+Xaero's Minimap jest już częścią paczki i działa tylko po stronie klienta. Nie instaluj go
+na serwerze Craftserve.
+
 Flashback jest częścią tej paczki. Krawędź 0.12.0 pozostawia zwykłe nagrania bez
 portali na natywnej ścieżce Flashbacka; nagrywanie scen z aktywnymi portalami nadal
 jest eksperymentalne. Domyślny Photon-Pszygoda 1.4 używa prawdziwych chmur

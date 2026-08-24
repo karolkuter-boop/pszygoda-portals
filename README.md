@@ -14,6 +14,7 @@ Adres manifestu Packwiz:
 - Flashback `0.39.7` z mostem snapshotu chunków Immersive Portals
 - Iris `1.8.0+mc1.21.1`
 - Sodium `0.6.0+mc1.21.1`
+- Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
 - Krawędź `0.13.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
@@ -40,7 +41,7 @@ Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje op
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.13.0` i paczka `1.0.0-portals.10` nie rozszerzają gwarancji na replaye portalowe:
+Krawędź `0.13.0` i paczka `1.0.0-portals.11` nie rozszerzają gwarancji na replaye portalowe:
 otwarcie replaya ani poprawne liczniki chunków nie są wystarczającym dowodem zgodności.
 
 Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:

@@ -2,11 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "README-AKTUALIZACJE.txt"
-hash = "5a9a5725aa9e95df39a21a97b09c87024b3dc301fa3a24a6513225e3f590bf2c"
+hash = "9c9341dfb14a2f0b8af5e35420fcb8ed9401def4c79814d90ee13b509f237244"
 
 [[files]]
 file = "README.md"
-hash = "8800b4b18571339282dbc8b1f9ec94e19bcdf6531b47b59736c675d1bf6e596f"
+hash = "a45e0ed576c4040a9a1a88551be049cf4ebe2807751188a887f2384359bba30e"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -236,6 +236,11 @@ metafile = true
 [[files]]
 file = "mods/worldedit.pw.toml"
 hash = "de999f6cc4c2f344e324b4f331fa9767844c31463c6e8066fcd67b613338ab8c"
+metafile = true
+
+[[files]]
+file = "mods/xaeros-minimap.pw.toml"
+hash = "12004908d0ca6936a99ab61c1130f6c24802adfc056deb16039c779ece59f3bb"
 metafile = true
 
 [[files]]
