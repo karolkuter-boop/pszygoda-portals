@@ -17,7 +17,7 @@ Adres manifestu Packwiz:
 - Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
-- Krawędź `0.18.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
+- Krawędź `0.19.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
   render-only Echo, oceanem pod `last_land`, anomaliami reżyserskimi i nową trasą Farlands
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
@@ -41,9 +41,11 @@ Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje op
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.18.0` i paczka `1.0.0-portals.14` zachowują naprawę crasha lokalnego ReplayServera
-`Missing Dimension krawedz:podroz`: serwerowe śledzenie chunków i encji Immersive Portals
-nie jest wykonywane ponownie podczas odtwarzania. Nie rozszerza to jeszcze gwarancji na
+Krawędź `0.19.0` i paczka `1.0.0-portals.15` domykają naprawę crasha lokalnego ReplayServera
+`Missing Dimension krawedz:podroz`: podczas odtwarzania nie jest ponownie wykonywany ani tick,
+ani dołączenie, aktualizacja i usuwanie graczy w serwerowym trackerze chunków Immersive Portals.
+Dokładny replay, który wcześniej crashował, otworzył się w pełnym stosie paczki z 625 chunkami,
+nagranym graczem i Replay Viewerem. Nie rozszerza to jeszcze gwarancji na
 złożone replaye portalowe:
 otwarcie replaya ani poprawne liczniki chunków nie są wystarczającym dowodem zgodności.
 
@@ -66,6 +68,12 @@ nie jest naprawiany wstecznie.
 Nowa anomalia jest dostępna jako `/krawedz anomalia pekniecie`. Pierwsze wywołanie tworzy
 dwustronny klaster czterech portali 3×4, drugie go usuwa, a `/krawedz anomalia stop` sprząta
 portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest rejestrowany.
+
+Krawędź 0.19.0 dodaje trwałe aliasy graczy: `/fakename set <nick>` zmienia nametag oraz nazwę
+na czacie, a `/fakename clear` przywraca nazwę konta. Alias jest synchronizowany z klientami
+i zapisywany po restarcie serwera. W tej samej wersji pełny cykl życia trackera IP jest
+wyłączony wyłącznie wewnątrz ReplayServera Flashbacka, więc zwykły serwer nadal korzysta
+z normalnego śledzenia chunków i graczy.
 
 Krawędź 0.14.0 zawiera `/krawedz anomalia tekst`: wiadomości czatu, nicki w TAB-ie i nad
 głowami graczy oraz tekst tabliczek rozpadają się wyłącznie w renderze klienta. Faza glitchu
@@ -152,7 +160,7 @@ synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę 
 ## Instalacja klienta
 
 Najprościej zaimportować wydany plik `.mrpack`. Dla instancji aktualizowanej przez Packwiz
-zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.14-r9.zip`. R9 nie polega na zawodnym,
+zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.15-r10.zip`. R10 nie polega na zawodnym,
 pustym `$INST_JAVA`: uruchamia lokalny resolver, sprawdza Javę 21 wybraną przez Prism lub jego
 zarządzany runtime, a dopiero potem odpala `packwiz-installer-bootstrap` z powyższym adresem.
 Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
@@ -162,7 +170,7 @@ Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
 ```powershell
 packwiz refresh
 packwiz list
-packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.14.mrpack
+packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.15.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba najpierw zaliczyć regresję bez portali: start
