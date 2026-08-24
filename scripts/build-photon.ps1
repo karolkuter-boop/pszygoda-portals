@@ -33,6 +33,10 @@ $shaderProperties = Join-Path $sourceRoot 'shaders\shaders.properties'
 if (-not (Select-String -LiteralPath $shaderProperties -SimpleMatch 'blend.gbuffers_clouds.colortex13' -Quiet)) {
     throw 'Dedicated vanilla-cloud pass must use the premultiplied-alpha colortex13 blend.'
 }
+$cloudFragmentSource = Join-Path $sourceRoot 'shaders\program\gbuffers_all_translucent.fsh'
+if (-not (Select-String -LiteralPath $cloudFragmentSource -SimpleMatch 'fragment_color.a = 1.0;' -Quiet)) {
+    throw 'Vanilla-cloud fragments must be opaque after their shape alpha test.'
+}
 foreach ($cloudFile in @(
     $cloudVertexProgram,
     $cloudFragmentProgram,

@@ -535,6 +535,16 @@ void main() {
             return;
         }
 
+#if defined PROGRAM_GBUFFERS_CLOUDS
+        // Vanilla gives the cloud mesh a translucent draw colour. That works
+        // in the fixed-function renderer, but here the very bright HDR sun and
+        // moon have already been composed into the sky buffer and visibly
+        // bleed through the cloud surface. Keep the original alpha for the
+        // shape cutout above, then make every surviving cloud fragment opaque
+        // so celestial bodies remain behind the Fancy-cloud geometry.
+        fragment_color.a = 1.0;
+#endif
+
         material = material_from(
             fragment_color.rgb,
             material_mask,

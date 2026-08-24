@@ -106,8 +106,10 @@ portali na klatkę. Iris startuje z `Photon-Pszygoda-1.4.zip`. W tym wariancie P
 zastępuje nieba własnymi chmurami wolumetrycznymi: Iris wymusza waniliowe `clouds=fancy`,
 a geometria chmur przechodzi przez osobny `gbuffers_clouds`. Pass usuwa podwójne cieniowanie
 ścian (mnożniki kierunkowe Minecrafta nie są ponownie mnożone o kierunkowe światło Photona),
-więc na bryłach nie powstają skokowe plamy jasności. To nadal prawdziwe chmury Minecrafta
-Fancy, nie opcja `Blocky Clouds` Photona.
+więc na bryłach nie powstają skokowe plamy jasności. Po wycięciu waniliowego kształtu ich
+powierzchnie są zapisywane jako nieprzezroczyste, dlatego słońce i księżyc pozostają za
+chmurami zamiast przebijać przez nie. To nadal prawdziwe chmury Minecrafta Fancy, nie opcja
+`Blocky Clouds` Photona.
 
 Opcje `VANILLA_SUN` i `VANILLA_MOON` są domyślnie włączone. Na niebie renderowane są
 kwadratowe tekstury słońca oraz faz księżyca Minecrafta, a realistyczne proceduralne tarcze
