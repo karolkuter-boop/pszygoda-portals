@@ -17,7 +17,7 @@ Adres manifestu Packwiz:
 - Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
-- Krawędź `0.13.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
+- Krawędź `0.13.1` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
   render-only Echo, oceanem pod `last_land` oraz anomalią `pekniecie`
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
@@ -41,7 +41,7 @@ Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje op
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.13.0` i paczka `1.0.0-portals.11` nie rozszerzają gwarancji na replaye portalowe:
+Krawędź `0.13.1` i paczka `1.0.0-portals.12` nie rozszerzają gwarancji na replaye portalowe:
 otwarcie replaya ani poprawne liczniki chunków nie są wystarczającym dowodem zgodności.
 
 Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
@@ -64,8 +64,9 @@ Nowa anomalia jest dostępna jako `/krawedz anomalia pekniecie`. Pierwsze wywoł
 dwustronny klaster czterech portali 3×4, drugie go usuwa, a `/krawedz anomalia stop` sprząta
 portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest rejestrowany.
 
-Krawędź 0.13.0 dodaje `/krawedz anomalia tekst`: wiadomości czatu, nicki w TAB-ie i nad
-głowami graczy oraz tekst tabliczek rozpadają się wyłącznie w renderze klienta. Oryginalne
+Krawędź 0.13.1 dodaje `/krawedz anomalia tekst`: wiadomości czatu, nicki w TAB-ie i nad
+głowami graczy oraz tekst tabliczek rozpadają się wyłącznie w renderze klienta. Faza glitchu
+zmienia się co 300 ms, czyli dwa razy szybciej niż w 0.13.0. Oryginalne
 wiadomości, profile i NBT tabliczek pozostają nietknięte. `/krawedz anomalia kopiowanie`
 przenosi każdą postawioną i zniszczoną pozycję bloku na tę samą lokalną współrzędną wszystkich
 wczytanych chunków aktywnego wymiaru oraz chunków wczytanych później. Wyłączenie zatrzymuje
