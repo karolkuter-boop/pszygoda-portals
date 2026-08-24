@@ -2,11 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "README-AKTUALIZACJE.txt"
-hash = "ce1084e8d4c5c8f527d80ef1747096a9c5f105e941b87e8e528d42cada6ab339"
+hash = "72e08251b60fb420d8de1d06acff4bfb91bda56d43164af8e645d336b4ef8ad0"
 
 [[files]]
 file = "README.md"
-hash = "868e92584ade030b38cabae50e06e0f861e873c2be102a7ac3155b1e51c7eb1f"
+hash = "97eb9d0eadf0275be6f4c467e629e516fa22f5ea52e50b3035ca9665cd6fe99c"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -176,8 +176,8 @@ hash = "691f950344974356f7c3a911b99affad66045633027e31e36a72a54d2bd3bc52"
 metafile = true
 
 [[files]]
-file = "mods/krawedz-0.19.1.jar"
-hash = "d9658c5e6baba445b67bc5000878cf03b3838da786166437f24a85a16b86a601"
+file = "mods/krawedz-0.19.2.jar"
+hash = "23bfe056ed0f293adbfeea8ef376c7df7bcf62201521cea80d466ee500d77c5b"
 
 [[files]]
 file = "mods/krypton.pw.toml"
@@ -220,8 +220,8 @@ hash = "8083e49b94eb72deca40e87757359cfaceef8d1f6a1a07c82f9e8bc9285eb5f2"
 metafile = true
 
 [[files]]
-file = "mods/pszygoda-1.14.125.jar"
-hash = "8cd0c81e5508d949865666a04d23ebb9cea9c46f74fad058d6b13808a5c67473"
+file = "mods/pszygoda-1.14.126.jar"
+hash = "baeaa146e4fb2de6db0272fabba05088023ec7f27894d9133f7c73d4c26efad7"
 
 [[files]]
 file = "mods/puzzles-lib.pw.toml"
