@@ -17,7 +17,7 @@ Adres manifestu Packwiz:
 - Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
-- Krawędź `0.13.1` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
+- Krawędź `0.14.0` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
   render-only Echo, oceanem pod `last_land` oraz anomalią `pekniecie`
 - Pszygoda `1.14.125`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka i pozwala czysto zamknąć replay bez dostępu do nieistniejącego Overworldu
@@ -41,7 +41,10 @@ Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje op
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.13.1` i paczka `1.0.0-portals.12` nie rozszerzają gwarancji na replaye portalowe:
+Krawędź `0.14.0` i paczka `1.0.0-portals.13` naprawiają crash lokalnego ReplayServera
+`Missing Dimension krawedz:podroz`: serwerowe śledzenie chunków i encji Immersive Portals
+nie jest wykonywane ponownie podczas odtwarzania. Nie rozszerza to jeszcze gwarancji na
+złożone replaye portalowe:
 otwarcie replaya ani poprawne liczniki chunków nie są wystarczającym dowodem zgodności.
 
 Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
@@ -64,13 +67,20 @@ Nowa anomalia jest dostępna jako `/krawedz anomalia pekniecie`. Pierwsze wywoł
 dwustronny klaster czterech portali 3×4, drugie go usuwa, a `/krawedz anomalia stop` sprząta
 portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest rejestrowany.
 
-Krawędź 0.13.1 dodaje `/krawedz anomalia tekst`: wiadomości czatu, nicki w TAB-ie i nad
+Krawędź 0.14.0 zawiera `/krawedz anomalia tekst`: wiadomości czatu, nicki w TAB-ie i nad
 głowami graczy oraz tekst tabliczek rozpadają się wyłącznie w renderze klienta. Faza glitchu
 zmienia się co 300 ms, czyli dwa razy szybciej niż w 0.13.0. Oryginalne
 wiadomości, profile i NBT tabliczek pozostają nietknięte. `/krawedz anomalia kopiowanie`
 przenosi każdą postawioną i zniszczoną pozycję bloku na tę samą lokalną współrzędną wszystkich
 wczytanych chunków aktywnego wymiaru oraz chunków wczytanych później. Wyłączenie zatrzymuje
 kolejkę i czyści wzorzec; kopie już zapisane w świecie pozostają.
+
+Echo ma własną animację chodu liczoną z przesunięcia pozycji, więc działa również wtedy, gdy
+serwerowy `limbAnimator` zapisuje same zera. Stare replaye z takim strumieniem dostają
+deterministyczny fallback. Stan `ekwipunek`, `tekst` i `serca` trafia do snapshotów Flashbacka,
+a wszystkie trzy efekty korzystają z przewijalnego czasu świata. Serwer replaya nie wykonuje
+ponownie żadnej logiki anomalii; `woda`, `chunki`, `encje` i `kopiowanie` odtwarzają zapisane
+pakiety i stan świata, a portal `pekniecie` nie jest usuwany jako osierocony przy wczytaniu.
 
 ## Celowo usunięte z wariantu
 
