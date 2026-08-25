@@ -1,12 +1,12 @@
 name = "Pszygoda Nagrywanie"
 author = "FFTV"
-version = "1.0.0-nagrywanie.1"
+version = "1.0.0-nagrywanie.2"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index-portals-1.0.0.toml"
 hash-format = "sha256"
-hash = "85dd90556998d09b5cb3ed7d1e398a0b4263bfe93820a6040a0669f48822a969"
+hash = "b2ba4de687095a84cb2eb6f1813e9f938484e0dbb8e7c60009a8d6137509819e"
 
 [versions]
 fabric = "0.19.3"
