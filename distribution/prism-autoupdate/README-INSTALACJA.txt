@@ -1,9 +1,9 @@
-PSZYGODA PORTALS - INSTANCJA PRISM Z AUTOMATYCZNA AKTUALIZACJA R13
+PSZYGODA PORTALS - INSTANCJA PRISM Z AUTOMATYCZNA AKTUALIZACJA R14
 
 1. Otworz Prism Launcher.
 2. Kliknij Dodaj instancje -> Importuj.
 3. Wskaz ten plik ZIP.
-4. Upewnij sie, ze powstala instancja o nazwie Pszygoda Portals AutoUpdate R13.
+4. Upewnij sie, ze powstala instancja o nazwie Pszygoda Portals AutoUpdate R14.
 5. Uruchom nowa instancje. Nie uruchamiaj starszej instancji Pszygoda Portals.
 
 Przed kazdym startem profil pobiera aktualna wersje paczki z:
@@ -18,7 +18,7 @@ Minecraft.
 
 Jesli w komunikacie startowym widac cudza stala sciezke profilu Windows albo sama
 fraze -jar bez programu Java przed nia, uruchomiona zostala starsza instancja. Ta wersja nazywa sie
-AutoUpdate R13 i uruchamia plik packwiz-update.cmd zamiast pustego $INST_JAVA.
+AutoUpdate R14 i uruchamia plik packwiz-update.cmd zamiast pustego $INST_JAVA.
 
 Gdy launcher nie znajdzie Javy 21, wybierz ja w ustawieniach instancji Prism albo
 ustaw zmienna srodowiskowa PSZYGODA_JAVA na pelna sciezke do bin\java.exe.
@@ -27,11 +27,10 @@ Nie dodawaj recznie Bobby, Vista, Voidstack, Simple Voice Chat ani innych wersji
 Iris lub Sodium. Xaero's Minimap jest juz w paczce jako mod kliencki. Ten profil ma wersje
 przypiete pod Immersive Portals 6.0.6.
 
-Flashback jest czescia paczki, ale gwarantowany tryb produkcyjny dotyczy obecnie
-scen bez aktywnych portali. Nagrywanie rozpocznij dopiero po usunieciu wszystkich
-portali i nie tworz portali w trakcie nagrania. Sceny wykorzystujace Immersive
-Portals nagrywaj osobno, bez uruchomionego nagrywania Flashback, dopoki pelna
-macierz zgodnosci portalowej nie przejdzie QA.
+Flashback jest czescia paczki. Anomalie Krawedzi dzialaja w replayach, a Pekniecie
+jest obslugiwane, gdy uruchomisz je przed rozpoczeciem nagrania. Nie tworz portalu
+w polowie trwajacego replaya; zatrzymaj nagranie, uruchom portal i rozpocznij nowe.
+Portale miedzywymiarowe, animowane i wielokrotnie zagniezdzone nie sa objete gwarancja.
 
 Domyslny Photon-Pszygoda 1.4 uzywa chmur Minecrafta Fancy i kwadratowego
 waniliowego slonca. W finale Krawedzi niebo robi sie pomaranczowo-zlote, ale

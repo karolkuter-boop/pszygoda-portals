@@ -3,7 +3,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$BootstrapJar,
 
-    [string]$OutputZip = (Join-Path $PSScriptRoot '..\Pszygoda-Portals-AutoUpdate-1.0.0-portals.18-r13.zip')
+    [string]$OutputZip = (Join-Path $PSScriptRoot '..\Pszygoda-Portals-AutoUpdate-1.0.0-portals.19-r14.zip')
 )
 
 $ErrorActionPreference = 'Stop'

@@ -17,7 +17,7 @@ Adres manifestu Packwiz:
 - Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
-- Krawędź `0.19.3` z przezroczystym trybem zwykłych replayów, stabilnymi typami encji,
+- Krawędź `0.19.4` z przezroczystym trybem zwykłych replayów, stabilnymi typami encji,
   portalowym protokołem v3,
   render-only Echo, oceanem pod `last_land`, anomaliami reżyserskimi i nową trasą Farlands
 - Pszygoda `1.14.126`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
@@ -41,15 +41,16 @@ jawnym `FAIL`. Stare snapshoty v2 z zerem portali są ignorowane, aby natywny st
 Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje opcjonalny:
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
-Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.19.3` i paczka `1.0.0-portals.18` zachowują natywne wysyłanie chunków Flashbacka
+Krawędź `0.19.4` i paczka `1.0.0-portals.19` zachowują natywne wysyłanie chunków Flashbacka
 i zapisują spawny oraz trackery encji przez tekstowe identyfikatory rejestru. Usuwa to rozjazd,
 który po otwarciu replaya w nowym procesie potrafił zamienić zwykłego moba w niegotową encję
 Immersive Portals, a następnie usunąć teren, nagranego gracza lub swobodną kamerę. Macierz
 12 scen zaliczyła 24/24 etapów zapisu i świeżego playbacku, w tym sceny bazowe, Echo, wszystkie
-anomalie objęte macierzą i diagnostyczne `pekniecie`; każdy log pozostał bez twardego błędu.
-Gwarancja produkcyjna nadal dotyczy scen bez aktywnych portali. Złożone replaye portalowe
-pozostają eksperymentalne.
+anomalie objęte macierzą i `pekniecie`; każdy log pozostał bez twardego błędu. Osobny przebieg
+`pekniecie` z aktywnym Photon-Pszygoda 1.4 również zaliczył nagranie i świeże odtworzenie.
+Gwarancja obejmuje anomalie Krawędzi oraz klaster `pekniecie` obecny przed rozpoczęciem nagrania.
+Arbitralne portale animowane, międzywymiarowe, zagnieżdżone oraz tworzone w połowie nagrania
+pozostają poza zakresem.
 
 Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
 
@@ -59,13 +60,11 @@ Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
 - teren, nagrana postać, pozostałe encje, odtwarzanie ciągłe i seek muszą działać tak samo jak
   przy nieobecnym Immersive Portals.
 
-Do czasu udokumentowanego PASS osobnej macierzy portalowej **nie uruchamiaj nagrywania
-Flashbacka w scenie z aktywnym portalem ani nie twórz portalu w trakcie nagrania**. Replaye
-z portalami, w tym zwykłymi i skalowanymi w jednym wymiarze, pozostają eksperymentalne.
-Portale między wymiarami, animowane i wielokrotnie zagnieżdżone nie są objęte zakresem.
-Portal utworzony w trakcie nagrania transparentnego nie przełącza trybu w połowie pliku;
-operator dostaje jedno ostrzeżenie i powinien zatrzymać nagranie. Stary testowy replay portalowy
-nie jest naprawiany wstecznie.
+Anomalię `pekniecie` uruchom przed rozpoczęciem nagrywania, aby Flashback od początku wybrał
+tryb MANAGED. Portal utworzony w trakcie nagrania transparentnego nie przełącza trybu w połowie
+pliku; operator dostaje jedno ostrzeżenie i powinien zatrzymać nagranie oraz rozpocząć nowe.
+Portale między wymiarami, animowane i wielokrotnie zagnieżdżone nie są objęte zakresem. Stary
+testowy replay portalowy nie jest naprawiany wstecznie.
 
 Nowa anomalia jest dostępna jako `/krawedz anomalia pekniecie`. Pierwsze wywołanie tworzy
 dwustronny klaster czterech portali 3×4, drugie go usuwa, a `/krawedz anomalia stop` sprząta
@@ -73,7 +72,7 @@ portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest re
 
 Krawędź 0.19.0 dodaje trwałe aliasy graczy: `/fakename set <nick>` zmienia nametag oraz nazwę
 na czacie, a `/fakename clear` przywraca nazwę konta. Alias jest synchronizowany z klientami
-i zapisywany po restarcie serwera. W 0.19.3 integracja IP nie zastępuje natywnego sendera
+i zapisywany po restarcie serwera. W 0.19.4 integracja IP nie zastępuje natywnego sendera
 chunków ani śledzenia graczy wewnątrz ReplayServera; zwykły serwer nadal korzysta z normalnej
 ścieżki Immersive Portals.
 
@@ -162,7 +161,7 @@ synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę 
 ## Instalacja klienta
 
 Najprościej zaimportować wydany plik `.mrpack`. Dla instancji aktualizowanej przez Packwiz
-zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.18-r13.zip`. R13 nie polega na zawodnym,
+zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.19-r14.zip`. R14 nie polega na zawodnym,
 pustym `$INST_JAVA`: uruchamia lokalny resolver, sprawdza Javę 21 wybraną przez Prism lub jego
 zarządzany runtime, a dopiero potem odpala `packwiz-installer-bootstrap` z powyższym adresem.
 Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
@@ -172,7 +171,7 @@ Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
 ```powershell
 packwiz refresh
 packwiz list
-packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.18.mrpack
+packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.19.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba najpierw zaliczyć regresję bez portali: start
