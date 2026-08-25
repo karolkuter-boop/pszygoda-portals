@@ -1,12 +1,12 @@
 name = "Pszygoda Portals"
 author = "FFTV"
-version = "1.0.0-portals.17"
+version = "1.0.0-portals.18"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index-portals-1.0.0.toml"
 hash-format = "sha256"
-hash = "373256021c0847b9cc505bfb21ee6dd44050f92864c296a212787bd521276b31"
+hash = "5520b0ebd3c23cbf4b2a8ab18a9d934b4f36a0047a8a9fdef2e064949ee6550e"
 
 [versions]
 fabric = "0.19.3"

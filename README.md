@@ -17,7 +17,8 @@ Adres manifestu Packwiz:
 - Xaero's Minimap `26.4.2` — minimapa i waypointy, wyłącznie po stronie klienta
 - `Photon-Pszygoda-1.4` jako domyślny shaderpack: fork Photona 1.3b z prawdziwymi
   chmurami Minecrafta Fancy, kwadratowym waniliowym słońcem i złotym finałem Krawędzi
-- Krawędź `0.19.2` z przezroczystym trybem zwykłych replayów, portalowym protokołem v3,
+- Krawędź `0.19.3` z przezroczystym trybem zwykłych replayów, stabilnymi typami encji,
+  portalowym protokołem v3,
   render-only Echo, oceanem pod `last_land`, anomaliami reżyserskimi i nową trasą Farlands
 - Pszygoda `1.14.126`, która pomija lifecycle Truman Set na wewnętrznym serwerze powtórki
   Flashbacka, pozwala czysto zamknąć replay i używa właściwego API Sodium 0.6
@@ -41,14 +42,14 @@ Flashbacka mógł otworzyć dawne zwykłe replaye best-effort. Most pozostaje op
 Krawędź uruchamia się również bez Flashbacka i Immersive Portals.
 
 Integracja odtwarzania Flashback–Immersive Portals ma obecnie status **eksperymentalny**.
-Krawędź `0.19.2` i paczka `1.0.0-portals.17` przywracają natywne wysyłanie i śledzenie
-chunków Flashbacka wyłącznie wewnątrz ReplayServera. Immersive Portals wcześniej anulował
-tę ścieżkę globalnie, dlatego replay mógł zawierać Echo, ale nie mieć terenu, nagranego gracza
-ani niezależnej kamery. Świeży replay bez portali z Echo na `last_land` przeszedł ciągłe
-odtwarzanie, seek wstecz i naprzód oraz ponowne otwarcie w nowym procesie: teren miał 1539
-bloków w próbce, obecni byli nagrany gracz i `Replay Viewer`, a kamera zachowała własną pozycję.
-Nie rozszerza to jeszcze gwarancji na złożone replaye portalowe: otwarcie replaya ani poprawne
-liczniki chunków nie są wystarczającym dowodem zgodności.
+Krawędź `0.19.3` i paczka `1.0.0-portals.18` zachowują natywne wysyłanie chunków Flashbacka
+i zapisują spawny oraz trackery encji przez tekstowe identyfikatory rejestru. Usuwa to rozjazd,
+który po otwarciu replaya w nowym procesie potrafił zamienić zwykłego moba w niegotową encję
+Immersive Portals, a następnie usunąć teren, nagranego gracza lub swobodną kamerę. Macierz
+12 scen zaliczyła 24/24 etapów zapisu i świeżego playbacku, w tym sceny bazowe, Echo, wszystkie
+anomalie objęte macierzą i diagnostyczne `pekniecie`; każdy log pozostał bez twardego błędu.
+Gwarancja produkcyjna nadal dotyczy scen bez aktywnych portali. Złożone replaye portalowe
+pozostają eksperymentalne.
 
 Twardy kontrakt dla następnego zatwierdzonego wydania jest następujący:
 
@@ -72,7 +73,7 @@ portal i tickety chunków. Bez Immersive Portals literal `pekniecie` nie jest re
 
 Krawędź 0.19.0 dodaje trwałe aliasy graczy: `/fakename set <nick>` zmienia nametag oraz nazwę
 na czacie, a `/fakename clear` przywraca nazwę konta. Alias jest synchronizowany z klientami
-i zapisywany po restarcie serwera. W 0.19.2 integracja IP nie zastępuje natywnego sendera
+i zapisywany po restarcie serwera. W 0.19.3 integracja IP nie zastępuje natywnego sendera
 chunków ani śledzenia graczy wewnątrz ReplayServera; zwykły serwer nadal korzysta z normalnej
 ścieżki Immersive Portals.
 
@@ -161,7 +162,7 @@ synchronizowany z tym repozytorium; klient i serwer muszą mieć dokładnie tę 
 ## Instalacja klienta
 
 Najprościej zaimportować wydany plik `.mrpack`. Dla instancji aktualizowanej przez Packwiz
-zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.17-r12.zip`. R12 nie polega na zawodnym,
+zaimportuj `Pszygoda-Portals-AutoUpdate-1.0.0-portals.18-r13.zip`. R13 nie polega na zawodnym,
 pustym `$INST_JAVA`: uruchamia lokalny resolver, sprawdza Javę 21 wybraną przez Prism lub jego
 zarządzany runtime, a dopiero potem odpala `packwiz-installer-bootstrap` z powyższym adresem.
 Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
@@ -171,7 +172,7 @@ Nie kopiuj komendy pre-launch ze starszych instancji R1–R3.
 ```powershell
 packwiz refresh
 packwiz list
-packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.17.mrpack
+packwiz modrinth export --output Pszygoda-Portals-1.0.0-portals.18.mrpack
 ```
 
 Po każdej zmianie stosu renderowania trzeba najpierw zaliczyć regresję bez portali: start
