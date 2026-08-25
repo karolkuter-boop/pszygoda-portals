@@ -81,6 +81,10 @@ file = "emotes/tpose.json"
 hash = "e81cd74ece1639d5d8dd2077c39f2de0a1880ce1d2aafa0fe7b51641aa40ab94"
 
 [[files]]
+file = "mods/Essential-fabric_1-21-1.jar"
+hash = "fdf76bbe928cfb0ffea3fcc1c691596ce902613bc343ec83de1792cbe0ff688f"
+
+[[files]]
 file = "mods/atmosfera.pw.toml"
 hash = "b3cc0b30fabf095f174bd6731282a806792cc55ca6cfa04142f81339d7564529"
 metafile = true
@@ -171,8 +175,8 @@ hash = "691f950344974356f7c3a911b99affad66045633027e31e36a72a54d2bd3bc52"
 metafile = true
 
 [[files]]
-file = "mods/krawedz-0.19.7.jar"
-hash = "ae887fba4b3af06e677a1554a2784af60e0d7986c634d93e648821b79f644823"
+file = "mods/krawedz-0.19.8.jar"
+hash = "3f827861bcbb9999fd7c19bb48f25812ae1fd251c7c04c7309d68315f1fbe2c3"
 
 [[files]]
 file = "mods/krypton.pw.toml"
